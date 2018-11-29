@@ -1,24 +1,24 @@
 var questions = [{
-    question : "When a user views a page containing a JavaScript program, which machine actually executes the script?",
-    choices : [ "The User's machine running a Web browser",
+    question: "When a user views a page containing a JavaScript program, which machine actually executes the script?",
+    choices: ["The User's machine running a Web browser",
         "The Web server",
         "A central machine deep within Netscape's corporate offices",
         "None of the above"],
-    correctAnswer : 0
-},{
-    question : "Which of the following can't be done with client-side JavaScript?",
-    choices : [ "Validating a form",
+    correctAnswer: 0
+}, {
+    question: "Which of the following can't be done with client-side JavaScript?",
+    choices: ["Validating a form",
         "Sending a form's contents by email",
         "Storing the form's contents to a database file on the server",
         "None of the above"],
-    correctAnswer : 2
-},{
-    question : "Using _______ statement is how you test for a specific condition",
-    choices : [ "select",
+    correctAnswer: 2
+}, {
+    question: "Using _______ statement is how you test for a specific condition",
+    choices: ["select",
         "if",
         "for",
         "none of the above"],
-    correctAnswer : 1
+    correctAnswer: 1
 }];
 
 var currentQuestion = 0;
@@ -26,12 +26,49 @@ var correctAnswers = 0;
 var quizOver = false;
 displayCurrentQuestion();
 document.getElementById("quiz-message").style.display = 'none';
+var j=1;
+
 function displayNext() {
     /*Write your code here */
+
+
+    if(document.querySelector("input[name='choice']:checked") == questions[j].correctAnswer)
+    {
+        correctAnswers++;
+    }
+
+    document.getElementById("question").innerHTML = questions[j].question;
+
+    var ul = document.getElementById("choice-list");
+    ul.classList.add("list-group");
+
+    ul.innerHTML="";
+
+    for (var i = 0; i < 4; i++) {
+
+        var li = document.createElement('li');
+        li.innerHTML = '<input type="radio" name="choice" value="'+i+'">'+questions[j].choices[i];
+        ul.appendChild(li);
+    }
+    j++;
+
+    if(j==3)
+        displayScore();
 }
 
 function displayCurrentQuestion() {
     /*Write your code here */
+    document.getElementById("question").innerHTML = questions[0].question;
+
+    var ul = document.getElementById("choice-list");
+    ul.classList.add("list-group");
+
+    for (var i = 0; i < 4; i++) {
+
+        var li = document.createElement('li');
+        li.innerHTML = '<input type="radio" name="choice" value="'+i+'">'+questions[0].choices[i];
+        ul.appendChild(li);
+    }
 }
 
 function resetQuiz() {
@@ -39,10 +76,12 @@ function resetQuiz() {
     correctAnswers = 0;
     hideScore();
 }
+
 function displayScore() {
     document.getElementById("result").innerHTML = "you scored: " + correctAnswers + " out of: " + questions.length;
     document.getElementById("result").style.display = 'block';
 }
+
 function hideScore() {
     document.getElementById("result").style.display = 'none';
 }
