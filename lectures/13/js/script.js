@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-var questions = [{
-    question: "When a user views a page containing a JavaScript program, which machine actually executes the script?",
-    choices: ["The User's machine running a Web browser",
-=======
 var questions = [
     {
     question : "When a user views a page containing a JavaScript program, which machine actually executes the script?",
     choices : [ "The User's machine running a Web browser",
->>>>>>> remotes/upstream/master
         "The Web server",
         "A central machine deep within Netscape's corporate offices",
         "None of the above"],
@@ -33,56 +27,14 @@ var correctAnswers = 0;
 var quizOver = false;
 displayCurrentQuestion();
 document.getElementById("quiz-message").style.display = 'none';
-var j=1;
 
 function displayNext() {
-<<<<<<< HEAD
-    /*Write your code here */
-
-
-    if(document.querySelector("input[name='choice']:checked") == questions[j].correctAnswer)
-    {
-        correctAnswers++;
-    }
-
-    document.getElementById("question").innerHTML = questions[j].question;
-
-    var ul = document.getElementById("choice-list");
-    ul.classList.add("list-group");
-
-    ul.innerHTML="";
-
-    for (var i = 0; i < 4; i++) {
-
-        var li = document.createElement('li');
-        li.innerHTML = '<input type="radio" name="choice" value="'+i+'">'+questions[j].choices[i];
-        ul.appendChild(li);
-    }
-    j++;
-
-    if(j==3)
-        displayScore();
-}
-
-function displayCurrentQuestion() {
-    /*Write your code here */
-    document.getElementById("question").innerHTML = questions[0].question;
-
-    var ul = document.getElementById("choice-list");
-    ul.classList.add("list-group");
-
-    for (var i = 0; i < 4; i++) {
-
-        var li = document.createElement('li');
-        li.innerHTML = '<input type="radio" name="choice" value="'+i+'">'+questions[0].choices[i];
-        ul.appendChild(li);
-=======
     if(!quizOver){
         var selectedValue = null;
         if(document.querySelector('input[name="dq"]:checked') !== null)
             selectedValue = document.querySelector('input[name="dq"]:checked').value;
         if (selectedValue == null) {
-            document.getElementById("quiz-message").innerText = "Please selected an answer"
+            document.getElementById("quiz-message").innerText = "Please selected an answer";
             document.getElementById("quiz-message").style.display = 'block';
         } else{
             document.getElementById("quiz-message").style.display = 'none';
@@ -95,7 +47,7 @@ function displayCurrentQuestion() {
             }
             else {
                 displayScore();
-                document.getElementById("next-btn").innerText = "Play Again?"
+                document.getElementById("next-btn").innerText = "Play Again?";
                 quizOver = true;
             }
         }
@@ -120,7 +72,6 @@ function displayCurrentQuestion() {
     for(var i=0; i<numChoices; i++){
         choice = questions[currentQuestion].choices[i];
         choiceList.innerHTML += "<li><input type='radio' value='"+i+"' name='dq'>" + choice + "</li>";
->>>>>>> remotes/upstream/master
     }
 }
 
