@@ -1,7 +1,7 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "wad");
+$con = mysqli_connect("localhost","root","","wad");
+if(!$con)
+    die("Connection failed");
 
-if (!$con) {
-    die("Connection Failed");
-}
+
 ?>
